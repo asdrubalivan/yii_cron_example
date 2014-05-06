@@ -16,8 +16,22 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'tiempo_cambio'); ?>
-		<?php echo $form->textField($model,'tiempo_cambio'); ?>
+        <?php echo $form->labelEx($model,'tiempo_cambio'); ?>
+        <?php
+        $this->widget(
+    'ext.jui.EJuiDateTimePicker',
+    array(
+        'model'     => $model,
+        'attribute' => 'tiempo_cambio',
+        'language'=> 'en',//default Yii::app()->language
+        //'mode'    => 'datetime',//'datetime' or 'time' ('datetime' default)
+        'options'   => array(
+            'dateFormat' => 'yy-mm-dd',
+            'timeFormat' => 'hh:mm tt',//'hh:mm tt' default
+        ),
+    )
+);
+        ?>
 		<?php echo $form->error($model,'tiempo_cambio'); ?>
 	</div>
 
